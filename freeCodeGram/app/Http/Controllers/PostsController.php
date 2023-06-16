@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
 {
@@ -32,5 +33,10 @@ class PostsController extends Controller
         ]);
 
         return redirect('/profile/'.auth()->user()->id);
+    }
+
+    public function show(\App\Models\Post $post)
+    {
+        return view('posts.show', compact('post'));
     }
 }
